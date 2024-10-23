@@ -8,3 +8,6 @@ Pending project description...
 * [Lisset Rico](https://github.com/Liz581) <br>
 * [Diana Rodriguez](https://github.com/drodr32) <br>
 * [Nandana Sheri](https://github.com/nandanasheri) <br>
+
+## Project Images
+Coming soon!
