@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Noticia+Text:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+:root {
+    --red: #cb7d8c;
+    --green: #80b686;
+    --yellow: #e9b96a;
+    --dark-gray: #31302F;
+    --white: #FAFAFA;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  height: 100vh; /* 100% of viewport height */
+  width: 100vw; /* 100% of viewport width */
+  background-color: var(--white);
+  box-sizing: border-box;
+}
+
+
+.logo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 2em;
+    font-family: "Noticia Text";
+    margin: 20px;
+  }
+
+.logo-course {
+    color: var(--green)
+}
+
+.logo-roast {
+    color: var(--red)
+}
+  
+
+.headline {
+  font-size: 5em;
+  text-align:center;
+  font-family: "Noticia Text";
+  line-height: 1.2;
+  font-color:
+}
+
+.highlight {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin: 5px;
+  color: #31302F;
+}
+
+.realest { background-color: var(--red); }
+.course { background-color: var(--green); }
+.review { background-color: var(--yellow); }
+
+.subtitle {
+  margin: 20px;
+  font-size: 2.5em;
+  font-family: "Inter";
+  text-align: center;
+  color: var(--dark-gray);
+  padding: 5px 10px;
+}
+
+.sub-subtitle{
+    font-size: 0.7em;
+    font-style: italic;
+}
+
+
+.dashboard-btn-location {
+    padding: 10px 50px;
+    margin: 50px 30px 40px 50px;  
+    position: relative;
+}
+  
+  
+  .dashboard-btn {
+    background-color: var(--yellow);
+    color: var(--dark-gray);
+    padding: 10px 20px;
+    font-size: 2em;
+    border-radius: 8px;
+    font-weight: bold;
+    border: none; /* Remove default border */
+    cursor: pointer;
+    text-decoration: none;
+    position: absolute;
+    top: 50%;      /* Vertically center */
+    left: 50%;     /* Horizontally center */
+    transform: translate(-50%, -50%); /* Adjusts for exact centering */
+  }
+
+
+.dashboard-btn:hover {
+  background-color: #b08950; /* Darker shade of the button's original color */
+  color: #ffffff; /* Changes text color to white */
+}
+
+
+.footer {
+  position: fixed; /* Fixes the footer to a specific position on the viewport */
+  bottom: 0; /* Positions it at the bottom */
+  right: 0; /* Positions it at the right */
+  margin: 20px; /* Adds some space from the edges */
+  font-size: 1em;
+  color: #888;
+}
