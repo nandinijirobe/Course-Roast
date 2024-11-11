@@ -71,7 +71,7 @@ body {
   text-align:center;
   font-family: "Noticia Text";
   line-height: 1.2;
-  font-color:
+  color: var(--dark-gray)
 }
 
 .highlight {

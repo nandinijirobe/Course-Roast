@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Tile from './Tile'
-
+ 
 export default function CourseTiles() {
+
+    const [courseData, setCourseData] = useState([])
+
+    const getCourseData = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/courses', {
+                method : 'GET'
+            })
+            if (!response.ok) {
+                throw new Error('Error in fetching Data')
+            }
+            const res = await response.json()
+            console.log(res)
+            setCourseData(res.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect (() => {
+        getCourseData()
+    }, [])
+
     return (
         <div>
         <tbody>

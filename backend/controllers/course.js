@@ -1,10 +1,9 @@
 export async function getCourses (db) {
-    const query = 'SELECT * FROM courses;'
+    const query = 'SELECT course_id, title, code, rating, difficulty, type FROM courses;'
     try {
         const [results, fields] = await db.query(query)
-        console.log(results)
         return results
     } catch (err) {
-        console.log(err)
+        throw err
     }
 }
