@@ -19,10 +19,11 @@ export default function Landing(){
             </div>
 
             <div className="dashboard-btn-location">
-                <button className="dashboard-btn">dashboard</button>
+                <a href = "./dashboard">
+                    <button className="dashboard-btn">dashboard</button>
+                </a>    
             </div>
             
-
             <div className="footer">made w &lt;3</div>
         
         </>

@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Noticia+Text:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+:root {
+    --red: #cb7d8c;
+    --green: #80b686;
+    --yellow: #e9b96a;
+    --dark-gray: #31302F;
+    --light-gray:#98A9B1;
+    --white: #FAFAFA;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-top: 80px; /* Adjust to prevent overlap with the fixed logo */
+    box-sizing: border-box;
+}
+
+
+.logo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 2em;
+    font-family: "Noticia Text";
+    margin: 20px;
+  }
+
+.logo-course {
+    color: var(--green)
+}
+
+.logo-roast {
+    color: var(--red)
+}
+
+.container {
+    display: flex; 
+    justify-content: flex-start;
+    align-items: center; 
+    gap: 20px; 
+}
+
+.pageTitle {
+    flex: 1; 
+    padding: 20px;
+    color: var(--dark-gray);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.search-filter-container {
+    flex: 0 0 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    font-size: 3.5em;
+    font-weight: bold;
+}
+
+.search-bar {
+    font-family: "Inter";
+    padding-left: 1em;
+    font-size: 0.3em;
+    border: 2px solid var(--light-gray);
+    height: 3em;
+    border-radius: 0.9em;
+    width: 20em;
+}
+
+.search-button{
+    font-family: "Inter";
+    height: 3.4em;
+    width: 3em;
+    margin:0.2em;
+    padding: 0.5em; 
+    font-size: 0.3em; 
+    background-color: var(--white);
+    border: 2px solid var(--light-gray);
+    border-radius: 0.9em;
+    cursor: pointer;
+    display: flex;
+    gap: 0.3em; /* Creates space between icon and text */
+    align-items: center; /* Centers items vertically */
+    justify-content: center; /* Centers items horizontally */
+}
+
+.filter-button{
+    font-family: "Inter";
+    margin:0.5em;
+    padding: 0.5em; 
+    font-size: 0.3em; 
+    background-color: var(--white);
+    border: 2px solid var(--light-gray);
+    border-radius: 0.9em;
+    cursor: pointer;
+    display: flex;
+    gap: 0.3em; /* Creates space between icon and text */
+    align-items: center; /* Centers items vertically */
+    justify-content: center; /* Centers items horizontally */
+    width: 8em; /* Adjust width as needed */
+    height: 3.4em;
+}
+
+.sortBy-button{
+    font-family: "Inter";
+    margin:0.5em;
+    padding: 0.5em; 
+    font-size: 0.3em; 
+    background-color: var(--white);
+    border: 2px solid var(--light-gray);
+    border-radius: 0.9em;
+    cursor: pointer;
+    display: flex;
+    gap: 0.3em; /* Creates space between icon and text */
+    align-items: center; /* Centers items vertically */
+    justify-content: center; /* Centers items horizontally */
+    width: 8em; /* Adjust width as needed */
+    height: 3.4em;
+}
+
+.search-button:hover, .filter-button:hover, .sortBy-button:hover {
+    background-color: var(--white); 
+    border-color: #d8dcd8; 
+}
+
+
+.search-icon{
+    color: var(--red);
+}
+
+.filter-icon{
+    color: var(--green);
+}
+
+.sort-icon{
+    color: var(--yellow);
+    height:2em;
+}

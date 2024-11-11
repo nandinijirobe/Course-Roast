@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Noticia+Text:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans:wght@400;700&display=swap');
+
+:root {
+    --red: #cb7d8c;
+    --green: #80b686;
+    --yellow: #e9b96a;
+    --dark-gray: #31302F;
+    --light-gray: #8a8882;
+    --white: #FAFAFA;
+}
+
+.CourseContainer {
+    display: flex;
+    margin:20px;
+    border-radius: 25px;
+    overflow: hidden; 
+    width: 25em; 
+    height: 16em; 
+}
+
+.high-rated {
+    background-color: var(--green); 
+    border: 2px solid var(--green); 
+    color:var(--green)
+}
+
+.mid-rated {
+    background-color: var(--yellow); 
+    border: 2px solid var(--yellow); 
+    color: var(--yellow); 
+}
+
+.low-rated {
+    background-color: var(--red); 
+    border: 2px solid var(--red); 
+    color:var(--red)
+}
+
+.high-rated:hover, .mid-rated:hover, .low-rated:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+}
+
+.cardLeft {
+    flex: 1;
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cardRight {
+    flex: 0 0 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    font-size: 3.5em;
+    font-weight: bold;
+}
+
+.courseCode {
+    font-family: "Inclusive Sans";
+    font-size: 3.5em;
+    font-weight: bold;
+    text-shadow: 0.5px 0.5px 1px white; 
+}
+
+.courseName {
+    font-family: "Inter";
+    font-weight: bold;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+.courseType {
+    margin-top: 12px;
+    font-size: 0.8em;
+    background-color: var(--white); 
+    color: var(--light-gray);
+    padding: 4px 0px;
+    border-radius: 6px;
+    text-align: center;
+    display: inline-block;
+    width: 10em; 
+
+}
+
