@@ -1,5 +1,5 @@
 import React from "react";
-import './Tile.css';
+import './Tile.module.css';
 
 export default function Tile(props) {
     return (

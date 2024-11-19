@@ -10,7 +10,7 @@
     --white: #FAFAFA;
 }
 
-body {
+/* body {
     margin: 0;
     padding: 0;
     display: flex;
@@ -18,31 +18,9 @@ body {
     align-items: center;
     justify-content: flex-start;
     min-height: 100vh;
-    padding-top: 80px; /* Adjust to prevent overlap with the fixed logo */
+    padding-top: 80px; 
     box-sizing: border-box;
-}
-
-
-.logo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #333;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 2em;
-    font-family: "Noticia Text";
-    margin: 20px;
-  }
-
-.logo-course {
-    color: var(--green)
-}
-
-.logo-roast {
-    color: var(--red)
-}
+} */
 
 .container {
     display: flex; 

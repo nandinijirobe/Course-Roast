@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Tile from './Tile'
+import './TilesDisplay.module.css';
  
 export default function CourseTiles() {
 
