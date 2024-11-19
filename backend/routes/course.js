@@ -1,12 +1,12 @@
 import express from "express"
-import { getCourses } from "../controllers/course.js";
+import { getAllCourses } from "../controllers/course.js";
 
 const router = express.Router()
 
 router.get('/', async (req, res) => {
     // Execute a simple query
     try {
-      const results = await getCourses()
+      const results = await getAllCourses(req.query)
       res.status(200).json({
         status: "success",
         data: results
