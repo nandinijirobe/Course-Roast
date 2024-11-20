@@ -91,9 +91,9 @@ export async function sortAllCourses (query = {}) {
  * @route GET /courses/filter
  * @desc Fetch all courses summaries listed in the database in SORTED order
 
- * @inputExample  -- GET http://localhost:3000/courses/filter?level=100,200&rating=2-5&difficulty=1-3
+ * @inputExample  -- GET http://localhost:3000/courses/filter?level=100,200&rating=2-5&difficulty=1-3&type=required
     filter by level, rating, type and difficulty
- * @outputExample -- next comment block
+ * @outputExample -- next comment block (not exact for this input. input is exhaustive to show all possible filter conditions)
 {
   "status": "success",
   "data": [
