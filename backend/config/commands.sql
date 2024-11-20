@@ -10,8 +10,8 @@ CREATE TABLE courses (
     credits_ug INT DEFAULT 0,
     credits_g INT DEFAULT 0,
     website VARCHAR(100),
-    rating INT DEFAULT 0,
-    difficulty INT DEFAULT 0,
+    rating FLOAT DEFAULT 0,
+    difficulty FLOAT DEFAULT 0,
     hours INT DEFAULT 0
 );
 
@@ -29,3 +29,5 @@ INSERT INTO courses (title, code, type, level, credits_ug) VALUES ('Software Eng
 INSERT INTO courses (title, code, type, level, credits_ug) VALUES ('Artificial Intelligence I', 'CS411', 'required', 400, 3);
 INSERT INTO courses (title, code, type, level, credits_ug) VALUES ('Computer Algorithms', 'CS401', 'required', 400, 3);
 
+-- If you want to reset
+DROP TABLE courses;
