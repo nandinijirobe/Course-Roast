@@ -23,15 +23,19 @@ import db from '../config/db.js'
 */
 export async function getAllCourses (query = {}) {
     let sqlQuery = ""
+    let sqlParams = []
     if (!query.q) {
-        sqlQuery = `SELECT course_id, title, code, rating, difficulty, type FROM courses;`
+      sqlQuery = `SELECT course_id, title, code, rating, difficulty, type FROM courses;`
     }
     else {
-        sqlQuery = `SELECT course_id, title, code, rating, difficulty, type FROM courses WHERE title LIKE '%${query.q}%' OR code LIKE '%${query.q}%';`
+      sqlParams.push(`%${query.q}%`)
+      sqlParams.push(`%${query.q}%`)
+      sqlQuery = `SELECT course_id, title, code, rating, difficulty, type FROM courses WHERE title LIKE ? OR code LIKE ?;`
     }
     try {
-        const [results, fields] = await db.query(sqlQuery)
-        return results
+      console.log(sqlQuery)
+      const [results, fields] = await db.query(sqlQuery, sqlParams)
+      return results
     } catch (err) {
         console.log(err)
         throw err
@@ -62,20 +66,23 @@ export async function getAllCourses (query = {}) {
 */
 export async function sortAllCourses (query = {}) {
     const sortcols = query.q.split(",")
-    let orderParams = ""
-    
+    let orderParams = []
+    const validCols = ['level', 'title', 'code', 'rating', 'difficulty']
 
     for (let i = 0; i < sortcols.length; i++) {
+      const colname = sortcols[i].substring(1)
+
+      if (validCols.includes(colname)) {
         if (sortcols[i][0] == "+") {
-            orderParams += sortcols[i].substring(1); 
+          orderParams.push(colname+' ASC'); 
         }
         else if (sortcols[i][0] == "-") {
-            orderParams += sortcols[i].substring(1) + " DESC"; 
+          orderParams.push(colname+' DESC'); 
         }
-        if (i != sortcols.length - 1) {
-            orderParams += ", "
-        }
+      }
     }
+
+    orderParams = orderParams.join(',')
     
     const sqlQuery = `SELECT course_id, title, code, rating, difficulty, type FROM courses ORDER BY ${orderParams};`
     try {
