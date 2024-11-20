@@ -1,10 +1,10 @@
 import express from "express"
-import { getAllCourses, sortAllCourses } from "../controllers/course.js";
+import { getAllCourses, sortAllCourses, filterCourses } from "../controllers/course.js";
 
 const router = express.Router()
 
 router.get('/', async (req, res) => {
-    // Execute a simple query
+   // Get all courses + search query
   try {
     const results = await getAllCourses(req.query)
     res.status(200).json({
@@ -20,9 +20,26 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/sort', async (req, res) => {
-  // Execute a simple query
+  // Sort all courses with multiple columns
 try {
   const results = await sortAllCourses(req.query)
+  res.status(200).json({
+    status: "success",
+    data: results
+  })
+} catch (err) {
+  res.status(500).json({ 
+      status: 'err',
+      data: err
+  })
+}
+})
+
+router.get('/filter', async (req, res) => {
+  // Filter courses by certain columns
+
+try {
+  const results = await filterCourses(req.query)
   res.status(200).json({
     status: "success",
     data: results
