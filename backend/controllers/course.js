@@ -174,3 +174,88 @@ export async function filterCourses (filters = {}) {
       throw err
   }
 }
+
+
+/**
+ * @route POST /courses/add
+ * @desc Add a course to database
+
+ * @inputExample  -- GET http://localhost:3000/courses/add
+   req body : {
+    "title" : "Database Systems",
+    "code" : "CS480",
+    "type" : "technical",
+    "level" : 400,
+    "credits_ug" : 3,
+    "credits_g" : 4,
+    "website" : "https://www.cs.uic.edu/~bglavic/cs480/2024-spring/syllabus/"
+
+}
+ * @outputExample -- next comment block 
+{
+  "status": "success",
+  "data": {
+    "title" : "Database Systems",
+    "code" : "CS480",
+    "type" : "technical",
+    "level" : 400,
+    "credits_ug" : 3,
+    "credits_g" : 4,
+    "website" : "https://www.cs.uic.edu/~bglavic/cs480/2024-spring/syllabus/"
+
+}
+}
+*/
+
+export async function addCourse (reqBody = {}) {
+  let sqlQuery = ""
+  let sqlParams = []
+  let paramValues = []
+
+  if ('title' in reqBody) {
+    sqlParams.push('title')
+    paramValues.push(reqBody['title'])
+  }
+
+  if ('code' in reqBody) {
+    sqlParams.push('code')
+    paramValues.push(reqBody['code'])
+  }
+
+  if ('type' in reqBody) {
+    sqlParams.push('type')
+    paramValues.push(reqBody['type'])
+  }
+
+  if ('level' in reqBody) {
+    sqlParams.push('level')
+    paramValues.push(reqBody['level'])
+  }
+
+  if ('credits_ug' in reqBody) {
+    sqlParams.push('credits_ug')
+    paramValues.push(reqBody['credits_ug'])
+  }
+
+  if ('credits_g' in reqBody) {
+    sqlParams.push('credits_g')
+    paramValues.push(reqBody['credits_g'])
+  }
+
+  if ('website' in reqBody) {
+    sqlParams.push('website')
+    paramValues.push(reqBody['website'])
+  }
+
+  
+  sqlParams = sqlParams.length > 1 ? sqlParams.join(',') : sqlParams
+
+  sqlQuery = `INSERT INTO courses (${sqlParams}) VALUES (?);`
+  try {
+      const [results, fields] = await db.query(sqlQuery, [paramValues])
+      return results
+  } catch (err) {
+      console.log(err)
+      throw err
+  }
+}
