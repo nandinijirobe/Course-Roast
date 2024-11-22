@@ -259,3 +259,38 @@ export async function addCourse (reqBody = {}) {
       throw err
   }
 }
+
+
+/**
+ * @route GET /courses/:code
+ * @desc Get course details
+
+ * @inputExample  -- GET http://localhost:3000/courses/CS111
+   
+ * @outputExample -- next comment block 
+{
+  "status": "success",
+  "data": {
+    "title" : "Database Systems",
+    "code" : "CS480",
+    "type" : "technical",
+    "level" : 400,
+    "credits_ug" : 3,
+    "credits_g" : 4,
+    "website" : "https://www.cs.uic.edu/~bglavic/cs480/2024-spring/syllabus/"
+
+}
+
+*/
+
+export async function getCourse (code = "") {
+  const sqlQuery = `SELECT title, code, type, credits_ug, credits_g, website, rating, difficulty, hours FROM courses WHERE code = ?;`
+  try {
+      
+      const [results, fields] = await db.query(sqlQuery, [code])
+      return results
+  } catch (err) {
+      console.log(err)
+      throw err
+  }
+}

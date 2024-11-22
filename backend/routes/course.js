@@ -1,6 +1,6 @@
 import express from "express"
 import bodyParser from "body-parser";
-import { getAllCourses, sortAllCourses, filterCourses, addCourse } from "../controllers/course.js";
+import { getAllCourses, sortAllCourses, filterCourses, addCourse, getCourse } from "../controllers/course.js";
 
 const router = express.Router()
 
@@ -73,6 +73,22 @@ router.post('/add', async (req, res) => {
 
 })
 
+router.get('/:code', async (req, res) => {
+  // Get course page details
+  
+  try {
+    const results = await getCourse(req.params.code)
+    res.status(200).json({
+      status: "success",
+      data: results
+    })
+  } catch (err) {
+    res.status(500).json({ 
+        status: 'err',
+        data: err
+    })
+  }
+})
 
 
 export {router}
