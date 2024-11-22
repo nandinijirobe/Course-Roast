@@ -1,4 +1,4 @@
-import './Dashboard.module.css';
+import styles from './Dashboard.module.css';
 import React from 'react';
 import CourseTiles from './components/TilesDisplay'
 import Logo from './components/Logo'
@@ -6,25 +6,26 @@ import { FaSort } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
 
+
 export default function Dashboard () {
     return(
         <>
             <Logo/>
 
-            <div className="container">
-                <div className="pageTitle">
+            <div className={styles["container"]}>
+                <div className={styles["pageTitle"]}>
                     <h1>Dashboard</h1>
                 </div>  
 
-                <div className="search-filter-container">
+                <div className={styles["search-filter-container"]}>
                     <input 
-                        type="text" 
-                        className="search-bar" 
-                        placeholder="Search" 
+                        type={styles["text"]} 
+                        className={styles["search-bar"]} 
+                        placeholder={styles["Search" ]}
                     />
-                    <button className="search-button"><FaSearch className="search-icon"/></button>
-                    <button className="filter-button"><FaFilter className="filter-icon"/>Filter</button>
-                    <button className="sortBy-button"><FaSort className="sort-icon"/> Sort</button>
+                    <button className={styles["search-button"]}><FaSearch className={styles["search-icon"]}/></button>
+                    <button className={styles["filter-button"]}><FaFilter className={styles["filter-icon"]}/>Filter</button>
+                    <button className={styles["sortBy-button"]}><FaSort className={styles["sort-icon"]}/> Sort</button>
                 </div>
 
             </div>

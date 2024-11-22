@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Tile from './Tile'
-import './TilesDisplay.module.css';
+import styles from './TilesDisplay.module.css';
  
 export default function CourseTiles() {
 
@@ -27,7 +27,7 @@ export default function CourseTiles() {
     }, [])
 
     return (
-        <div>
+        <div className= {styles["all-tiles"]}>
         <tbody>
                 <tr>
                     <td><Tile courseCode = "CS 111" courseName = "Program Design I" courseType = "Required Elective" courseOverallRating= {4.9}/></td>
