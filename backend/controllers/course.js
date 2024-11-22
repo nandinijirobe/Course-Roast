@@ -280,7 +280,6 @@ export async function addCourse (reqBody = {}) {
     "website" : "https://www.cs.uic.edu/~bglavic/cs480/2024-spring/syllabus/"
 
 }
-
 */
 
 export async function getCourse (code = "") {
@@ -288,6 +287,25 @@ export async function getCourse (code = "") {
   try {
       
       const [results, fields] = await db.query(sqlQuery, [code])
+      return results
+  } catch (err) {
+      console.log(err)
+      throw err
+  }
+}
+
+// Function to update Course once a review has been posted with the new overall rating, difficulty and number of hours
+export async function updateCourse(values = {}) {
+  let params = []
+  params.push(values['rating'])
+  params.push(values['difficulty'])
+  params.push(values['hours'])
+  params.push(values['code'])
+
+  const sqlQuery = `UPDATE courses SET rating = ?, difficulty = ?, hours = ? WHERE code = ?;`
+  
+  try {  
+      const [results, fields] = await db.query(sqlQuery, params)
       return results
   } catch (err) {
       console.log(err)
