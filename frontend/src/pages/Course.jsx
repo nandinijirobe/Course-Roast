@@ -7,6 +7,7 @@ import Logo from './components/Logo'
 export default function Course () {
     return(
         <>
+            <Logo/>
             this is the course page
             <ReviewsDisplay/>
         </>

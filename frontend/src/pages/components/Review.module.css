@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Noticia+Text:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans:wght@400;700&display=swap');
+
+:root {
+    --red: #cb7d8c;
+    --green: #80b686;
+    --yellow: #e9b96a;
+    --dark-gray: #31302F;
+    --mid-gray:#57524D;
+    --light-gray: #8a8882;
+    --white: #FAFAFA;
+}
+
+/* colors based on ratings  */
+
+.high-rated-border {
+    border: 0.2rem solid var(--green);
+}
+
+.mid-rated-border {
+    border: 0.2rem solid var(--yellow);
+}
+
+.low-rated-border {
+    border: 0.2rem solid var(--red);
+}
+
+.high-rated-bg {
+    background-color: var(--green);
+}
+
+.mid-rated-bg {
+    background-color: var(--yellow);
+}
+
+.low-rated-bg {
+    background-color: var(--red);
+}
+
+.review-container {
+    display: flex; /* Use flexbox to align children side by side */
+    border-radius: 1.5rem;
+    margin: 1rem 3rem;
+}
+
+
+/* left side of card */
+
+.cardLeft {
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+    width: 6rem;
+}
+
+.sem-year-text {
+    font-family: Inter;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--white);
+    transform: rotate(-90deg); /* Rotate the text */
+    text-align: center; /* Ensure text alignment when rotated */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+
+/* right side of card */
+
+.cardRight{
+    display: flex;
+}
+
+.comment-grade{
+    font-size: 1.5rem;
+    background-color: var(--white);
+    font-family: Inter;
+    padding: 1rem;
+    margin-left: 2rem;
+    margin-right: 20rem;
+}
+
+.grade{
+    color: #57524D;
+    font-weight: bold;
+}
+
+.comment {
+    padding: 1rem 0rem;
+}
+
+/* Stats Section */
+.stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally center the items */
+    justify-content: center; /* Vertically center the items */
+    height: 100%; /* Ensure the container takes the full height of the parent */
+    flex-wrap: wrap;
+}
+
+
+.rating,
+.difficulty,
+.hours-week {
+    border: 0.2rem solid var(--mid-gray);
+    color:var(--mid-gray);
+    white-space: nowrap;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: 1.5rem;
+    font-family: Inter;
+    font-weight: bold;
+    margin-top: 0.2rem;
+    margin-right: 1rem;
+    width: 15rem;
+    height: 2rem;
+}
+
