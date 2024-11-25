@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Noticia+Text:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans:wght@400;700&display=swap');
+
+
+:root {
+    --red: #cb7d8c;
+    --green: #80b686;
+    --yellow: #e9b96a;
+    --dark-gray: #31302F;
+    --mid-gray:#57524D;
+    --light-gray: #8a8882;
+    --white: #FAFAFA;
+}
+
+
+.title-and-btn {
+    font-family: Inter;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between; /* Pushes items to the far edges */
+    align-items: center; /* Ensures items are vertically aligned */
+    margin: 2rem 0rem;
+    
+}
+
+.course-title {
+    font-size: 2rem;
+    width: auto; /* Prevent unnecessary width constraint */
+    height: auto; /* Prevent unnecessary height constraint */
+    margin: 1rem;
+}
+
+.spill-beans-btn {
+    background-color: var(--white);
+    font-size:2rem;
+    font-family: Inter;
+    font-weight: bold;
+    border: 0.3rem solid var(--light-gray);
+    padding: 1rem;
+    border-radius: 0.5em;
+    white-space: nowrap;
+    width: fit-content;
+    height: auto; /* Prevent unnecessary height constraint */
+}
+.course-stats{
+    display: flex;
+}

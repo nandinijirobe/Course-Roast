@@ -41,7 +41,7 @@
 .review-container {
     display: flex; /* Use flexbox to align children side by side */
     border-radius: 1.5rem;
-    margin: 1rem 3rem;
+    margin: 1rem 0rem;
 }
 
 
@@ -99,6 +99,7 @@
     justify-content: center; /* Vertically center the items */
     height: 100%; /* Ensure the container takes the full height of the parent */
     flex-wrap: wrap;
+    gap:0.5rem;
 }
 
 

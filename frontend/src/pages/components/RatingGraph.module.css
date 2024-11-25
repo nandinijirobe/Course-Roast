@@ -1,0 +1,15 @@
+/* RatingGraph.module.css */
+.container {
+    text-align: center;
+    background-color: aqua;
+  }
+  
+  .chartWrapper {
+    display: inline-block;
+  }
+  
+  .heading {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
