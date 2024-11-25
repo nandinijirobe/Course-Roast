@@ -300,9 +300,9 @@ export async function updateCourse(values = {}) {
   params.push(values['rating'])
   params.push(values['difficulty'])
   params.push(values['hours'])
-  params.push(values['code'])
+  params.push(values['course_id'])
 
-  const sqlQuery = `UPDATE courses SET rating = ?, difficulty = ?, hours = ? WHERE code = ?;`
+  const sqlQuery = `UPDATE courses SET rating = ?, difficulty = ?, hours = ? WHERE course_id = ?;`
   
   try {  
       const [results, fields] = await db.query(sqlQuery, params)

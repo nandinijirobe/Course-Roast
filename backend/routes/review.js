@@ -26,7 +26,7 @@ router.get('/:course_id', async (req, res) => {
 // POST add a review for a certain course
 router.post('/:course_id/add', async (req, res) => {
   try {
-    addReview(course_id, req.body)
+    addReview(req.params.course_id, req.body)
     res.status(200).json({
       status: "success",
       data: req.body

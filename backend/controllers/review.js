@@ -6,7 +6,6 @@ import { updateCourse } from './course.js'
 // This function returns all the reviews for a specific course
 export async function getReviews (course_id = "") {
     const query = `SELECT * FROM reviews WHERE course_id = ?;`
-    console.log(course_id)
     try {
         const [results, fields] = await db.query(query, [course_id])
         return results
@@ -21,16 +20,14 @@ export async function getReviews (course_id = "") {
 // First, get course_id, average(overall_rating, overall_diff, work_hrs) from the reviews
 // Second, send numbers to the respective overall course standings
 export async function updateOverallCourse (course_id = "") {
-    const query = 'SELECT course_id, AVG(rating), AVG(difficulty), AVG(hours) FROM reviews where course_id = ?;'
+    const query = 'SELECT course_id, AVG(rating) as avg_rating, AVG(difficulty) as avg_difficulty, AVG(hours) as avg_hours FROM reviews where course_id = ?;'
 
     try {
-        const review_data = await db.query(query, [course_id])
-        console.log(review_data)
+        const [results, fields] = await db.query(query, [course_id])
         
-        let values = { rating: review_data.data.rating, difficulty: review_data.data.difficulty, hours: review_data.data.hours, code: review_data.data.course_id }
+        let values = { rating: results[0].avg_rating, difficulty: results[0].avg_difficulty, hours: results[0].avg_hours, course_id: results[0].course_id }
         
         const course_data = await updateCourse(values)
-        console.log(course_data)
         return course_data
     } catch (error) {
         console.log(error)
@@ -50,7 +47,8 @@ export async function addReview (course_id = "", body = {}) {
     const query = `INSERT INTO reviews (${attr}) VALUES (?);`
 
     try {
-        const results = await db.query(query, [values])
+        const [results, fields] = await db.query(query, [values])
+        const updates = await updateOverallCourse(course_id)
         return results
     } catch (error) {
         console.log(error)
