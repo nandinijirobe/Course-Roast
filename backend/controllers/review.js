@@ -1,208 +1,58 @@
 import db from '../config/db.js'
+import { updateCourse } from './course.js'
 // Review Queries
 
-/**
- * @route GET /courses
- * @desc Fetch all review summaries listed in the database + search by query params
+// GET http://localhost:5173/:course_id
+// This function returns all the reviews for a specific course
+export async function getReviews (course_id = "") {
+    const query = `SELECT * FROM reviews WHERE course_id = ?;`
 
- * @inputExample  -- GET http://localhost:5173/reviews?q=CS111
- * @outputExample -- next comment block
-{
-  "status": "success",
-  "data": [
-    {
-      "review_id": 1,
-      "course_id": 1,
-      "overall_rating": 0,
-      "technical": 5,
-      "creative": 3,
-      "theory": 3,
-      "work_hrs": 8,
-      "grade_earned": "B",
-      "semester": "Fall",
-      "year": 2024,
-      "prof_id": 4
-    }
-  ]
-}
-*/
-export async function getAllReviews (query = {}) {
-    let sqlQuery = ""
-    let sqlParams = []
-    if (!query.q) {
-      sqlQuery = `SELECT * FROM reviews;`
-    }
-    else {
-      sqlParams.push(`%${query.q}%`)
-      sqlParams.push(`%${query.q}%`)
-      sqlQuery = `SELECT * FROM reviews WHERE course_id LIKE ?;`
-    }
     try {
-      console.log(sqlQuery)
-      const [results, fields] = await db.query(sqlQuery, sqlParams)
-      return results
-    } catch (err) {
-        console.log(err)
-        throw err
+      return await db.query(query, [course_id])
+    } catch (error) {
+        console.log(error)
+        throw error
     }
 }
 
 
-/**
- * @route GET /reviews/sort
- * @desc Fetch all review summaries listed in the database in SORTED order
+// Would this be a POST technically???
+// First, get course_id, average(overall_rating, overall_diff, work_hrs) from the reviews
+// Second, send numbers to the respective overall course standings
+export async function updateOverallCourse (course_id = "") {
+    const query = 'SELECT course_id, AVG(rating), AVG(difficulty), AVG(hours) FROM reviews where course_id = ?;'
 
- * @inputExample  -- GET http://localhost:5173/courses/sort?%2Boverall_rating,+grade_earned
-    NOTE : %2B is the encoding for a + because + is interpreted as a space by the browser
-    sort by overall_rating, grade_earned
- * @outputExample -- next comment block
-{
-  "status": "success",
-  "data": [
-    {
-      "review_id": 1,
-      "course_id": 1,
-      "overall_rating": 0,
-      "technical": 5,
-      "creative": 3,
-      "theory": 3,
-      "work_hrs": 8,
-      "grade_earned": "B",
-      "semester": "Fall",
-      "year": 2024,
-      "prof_id": 4
-    }
-  ]
-}
-*/
-export async function sortAllCourses (query = {}) {
-    const sortcols = query.q.split(",")
-    let orderParams = []
-    const validCols = ['overall_rating', 'technical', 'creative', 'theory', 'semester', 'year']
-
-    for (let i = 0; i < sortcols.length; i++) {
-      const colname = sortcols[i].substring(1)
-
-      if (validCols.includes(colname)) {
-        if (sortcols[i][0] == "+") {
-          orderParams.push(colname+' ASC'); 
-        }
-        else if (sortcols[i][0] == "-") {
-          orderParams.push(colname+' DESC'); 
-        }
-      }
-    }
-
-    orderParams = orderParams.join(',')
-    
-    const sqlQuery = `SELECT * FROM reviews ORDER BY ${orderParams};`
     try {
-        const [results, fields] = await db.query(sqlQuery)
-        return results
-    } catch (err) {
-        console.log(err)
-        throw err
+        const review_data = await db.query(query, [course_id])
+        console.log(review_data)
+        
+        let values = { rating: review_data.data.rating, difficulty: review_data.data.difficulty, hours: review_data.data.hours, code: review_data.data.course_id }
+        
+        const course_data = await updateCourse(values)
+        console.log(course_data)
+        return course_data
+    } catch (error) {
+        console.log(error)
+        throw error
     }
 }
 
 
-/**
- * @route GET /reviews/filter
- * @desc Fetch all reviews summaries listed in the database in SORTED order
+// POST http://localhost:5173/:course_id/review
+export async function addReview (course_id = "", body = {}) {
+    let attr = ['course_id', 'comment', 'rating', 'difficulty', 'technical', 'creative', 'theory', 'hours', 'semester', 'year', 'grade_earned']
+    attr.join(',')
 
- * @inputExample  -- GET http://localhost:3000/reviews/filter?overall_rating=4
-    filter by overall_rating
- * @outputExample -- next comment block (not exact for this input. input is exhaustive to show all possible filter conditions)
-{
-  "status": "success",
-  "data": [
-    
-  ]
-}
-*/
+    let values = [ course_id, body['comment'], body['rating'], body['difficulty'], body['technical'], body['creative'], body['theory'], body['hours'], body['semester'], body['year'], body['grade_earned']]
+    values.join(',')
 
-export async function filterCourses (filters = {}) {
-    console.log(filters)
-    let sqlQuery = ""
-    let sqlParams = []
-    let paramValues = []
-    
-    if ('overall_rating' in filters) {
-      const ratingParams = filters.rating.split('-')
-      sqlParams.push("overall_rating = ?")
-      paramValues.push(parseInt(ratingParams[0]))
-      // paramValues.push(parseInt(ratingParams[1]))
-    }
-  
-    if ('technical' in filters) {
-      const difficultyParams = filters.difficulty.split('-')
-      sqlParams.push("technical = ?")
-      paramValues.push(parseInt(difficultyParams[0]))
-      // paramValues.push(parseInt(difficultyParams[1]))
-    }
+    const query = `INSERT INTO reviews (${attr}) VALUES (?);`
 
-    if ('creative' in filters) {
-        const difficultyParams = filters.difficulty.split('-')
-        sqlParams.push("creative = ?")
-        paramValues.push(parseInt(difficultyParams[0]))
-        // paramValues.push(parseInt(difficultyParams[1]))
-    }
-
-    if ('semester' in filters) {
-        const difficultyParams = filters.difficulty.split('-')
-        sqlParams.push("semester = ?")
-        paramValues.push(parseInt(difficultyParams[0]))
-        // paramValues.push(parseInt(difficultyParams[1]))
-    }
-
-    if ('year' in filters) {
-        const difficultyParams = filters.difficulty.split('-')
-        sqlParams.push("year = ?")
-        paramValues.push(parseInt(difficultyParams[0]))
-        // paramValues.push(parseInt(difficultyParams[1]))
-    }
-    
-    if ('prof_id' in filters) {
-        const difficultyParams = filters.difficulty.split('-')
-        sqlParams.push("prof_id = ?")
-        paramValues.push(parseInt(difficultyParams[0]))
-        // paramValues.push(parseInt(difficultyParams[1]))
-    }
-  
-    sqlParams = sqlParams.length > 1 ? sqlParams.join(' AND ') : sqlParams
-  
-    sqlQuery = 'SELECT * FROM reviews WHERE ' + sqlParams + ";"
-    
     try {
-        const [results, fields] = await db.query(sqlQuery, paramValues)
+        const results = await db.query(query, [values])
         return results
-    } catch (err) {
-        console.log(err)
-        throw err
-    }
-  }
-
-
-// Function to update Review once a review has been posted with the new course_id, overall rating, technical, creative, theory, work_hrs, grade_earned and prof_id
-export async function updateReview(values = {}) {
-    let params = []
-    params.push(values['course_id'])
-    params.push(values['overall_rating'])
-    params.push(values['technical'])
-    params.push(values['creative'])
-    params.push(values['theory'])
-    params.push(values['work_hrs'])
-    params.push(values['grade_earned'])
-    params.push(values['prof_id'])
-    params.push(values['review_id'])
-  
-    const sqlQuery = `UPDATE reviews SET course_id = ?, overall rating = ?, technical = ?, creative = ?, theory = ?, work_hrs = ?, grade_earned = ?, prof_id = ? WHERE review_id = ?;`
-    
-    try {  
-        const [results, fields] = await db.query(sqlQuery, params)
-        return results
-    } catch (err) {
-        console.log(err)
-        throw err
+    } catch (error) {
+        console.log(error)
+        throw error
     }
 }
