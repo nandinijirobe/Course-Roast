@@ -1,6 +1,6 @@
 import express from "express"
-import bodyParser from "body-parser";
-import { getAllCourses, sortAllCourses, filterCourses, addCourse, getCourse } from "../controllers/course.js";
+import bodyParser from "body-parser"
+import { getAllCourses, sortAllCourses, filterCourses, addCourse, getCourse } from "../controllers/course.js"
 
 const router = express.Router()
 

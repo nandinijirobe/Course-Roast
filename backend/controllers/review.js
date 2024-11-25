@@ -6,9 +6,10 @@ import { updateCourse } from './course.js'
 // This function returns all the reviews for a specific course
 export async function getReviews (course_id = "") {
     const query = `SELECT * FROM reviews WHERE course_id = ?;`
-
+    console.log(course_id)
     try {
-      return await db.query(query, [course_id])
+        const [results, fields] = await db.query(query, [course_id])
+        return results
     } catch (error) {
         console.log(error)
         throw error
@@ -38,7 +39,7 @@ export async function updateOverallCourse (course_id = "") {
 }
 
 
-// POST http://localhost:5173/:course_id/review
+// POST http://localhost:5173/reviews/:course_id/add
 export async function addReview (course_id = "", body = {}) {
     let attr = ['course_id', 'comment', 'rating', 'difficulty', 'technical', 'creative', 'theory', 'hours', 'semester', 'year', 'grade_earned']
     attr.join(',')

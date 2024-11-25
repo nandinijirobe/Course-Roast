@@ -1,6 +1,6 @@
 import db from '../config/db.js'
 // Course Queries
-
+// 
 /**
  * @route GET /courses
  * @desc Fetch all courses summaries listed in the database + search by query params
