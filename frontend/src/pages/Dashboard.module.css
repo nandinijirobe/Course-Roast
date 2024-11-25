@@ -128,3 +128,185 @@
     color: var(--yellow);
     height:2em;
 }
+
+
+/* POPUP WINDOW CONTENT PAST THIS POINT. FOR FILTER */
+/* Main popup container */
+.popup-content {
+    text-align: left;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: auto;
+    position: relative;
+    font-family: "Inter", sans-serif;
+}
+
+/* Header (Filter) */
+.popup-content h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #000; /* Black for the header */
+}
+
+/* Section Titles (Class-Level, Course Type) */
+.popup-content h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+/* Checkbox group container */
+.popup-content .checkbox-group {
+    margin-bottom: 1.5rem; /* Space between groups */
+}
+
+/* Individual checkbox labels */
+.popup-content label {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #4A4A4A; /* Dark gray for text */
+    cursor: pointer;
+}
+
+/* Custom checkbox appearance */
+.popup-content input[type="checkbox"] {
+    margin-right: 0.5rem;
+    accent-color: #6A5ACD; /* Purple checkboxes */
+}
+
+/* Button group for Cancel and Save */
+.popup-content .button-group {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    align-items: center; /* Align the buttons vertically */
+    width: 100%;
+    gap: 3rem; /* Reduce the space between buttons */
+    margin-top: 2rem;
+}
+
+/* Cancel button */
+.popup-content .cancel-button {
+    padding: 0.8rem 2rem;
+    background-color: #cb7d8c; /* Light red */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.popup-content .cancel-button:hover {
+    background-color: #a15c6d; /* Darker red on hover */
+    transform: scale(1.05); /* Slight scale effect */
+}
+
+/* Save button */
+.popup-content .save-button {
+    padding: 0.8rem 2rem;
+    background-color: #80b686; /* Light green */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.popup-content .save-button:hover {
+    background-color: #5d8c5f; /* Darker green on hover */
+    transform: scale(1.05); /* Slight scale effect */
+}
+
+/* POPUP WINDOW CONTENT PAST THIS POINT. FOR SORT */
+/* Main popup container */
+.popup-content2 {
+    text-align: left;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: auto;
+    position: relative;
+    font-family: "Inter", sans-serif;
+}
+
+/* Header (Filter) */
+.popup-content2 h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #000; /* Black for the header */
+}
+
+/* Checkbox group container */
+.popup-content2 .checkbox-group2 {
+    margin-bottom: 1.5rem; /* Space between groups */
+}
+
+/* Individual checkbox labels */
+.popup-content2 label {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #4A4A4A; /* Dark gray for text */
+    cursor: pointer;
+}
+
+/* Custom checkbox appearance */
+.popup-content2 input[type="checkbox"] {
+    margin-right: 0.5rem;
+    accent-color: #6A5ACD; /* Purple checkboxes */
+}
+
+/* Button group for Cancel and Save */
+.popup-content2 .button-group2 {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    align-items: center; /* Align the buttons vertically */
+    width: 100%;
+    gap: 3rem; /* Reduce the space between buttons */
+    margin-top: 2rem;
+}
+
+/* Cancel button */
+.popup-content2 .cancel-button2 {
+    padding: 0.8rem 2rem;
+    background-color: #cb7d8c; /* Light red */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.popup-content2 .cancel-button2:hover {
+    background-color: #a15c6d; /* Darker red on hover */
+    transform: scale(1.05); /* Slight scale effect */
+}
+
+/* Save button */
+.popup-content2 .save-button2 {
+    padding: 0.8rem 2rem;
+    background-color: #80b686; /* Light green */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.popup-content2 .save-button2:hover {
+    background-color: #5d8c5f; /* Darker green on hover */
+    transform: scale(1.05); /* Slight scale effect */
+}

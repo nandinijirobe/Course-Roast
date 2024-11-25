@@ -1,19 +1,45 @@
+/* Header container for the logo and GitHub icon */
+.header-container {
+    display: flex; /* Use flexbox for horizontal layout */
+    align-items: center; /* Vertically align items */
+    justify-content: space-between; /* Space out the logo and GitHub icon */
+    padding: 1rem 2rem; /* Add padding around the container */
+    border-radius: 0.75rem; /* Optional: Add rounded edges */
+}
+
+/* Logo Styling */
 .logo {
-    /* position: relative; */
-    background-color: #333;
-    width: 20rem;
-    padding: 1rem 1rem;
-    text-align: center;
-    border-radius: 0.75rem;
-    font-weight: bold;
+    display: flex; /* Use flexbox for horizontal layout */
+    align-items: center; /* Vertically align items */
+    justify-content: space-between; 
+    padding: 1rem 2rem; /* Add padding around the container */
+    background-color: #333; /* Optional: Match background color */
+    border-radius: 0.75rem; /* Optional: Add rounded edges */
     font-size: 2.5rem;
+    font-weight: bold;
     font-family: "Noticia Text";
-  }
+}
 
 .logo-course {
-    color: var(--green)
+    color: var(--green);
 }
 
 .logo-roast {
-    color: var(--red)
+    color: var(--red);
+}
+
+/* GitHub Icon Styling */
+.github-icon {
+    position: absolute; /* Position relative to the header-container */
+    top: 3rem; /* Adjust the vertical position (distance from top) */
+    right: 3rem; /* Adjust the horizontal position (distance from right) */
+    font-size: 2.5rem; /* Match size of the logo */
+    color: rgb(15, 2, 86); /* Set icon color */
+    text-decoration: none; /* Remove underline for the link */
+    transition: transform 0.2s ease-in-out; /* Add hover effect */
+}
+
+.github-icon:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    color: #6cc644; /* Optional: Change color on hover */
 }
