@@ -5,6 +5,7 @@ import { router as courseRouter } from './routes/course.js';
 import { router as reviewRouter } from './routes/review.js'; 
 
 const app = express()
+
 app.use(cors({origin: 'http://localhost:5173'})) // enables CORS
 
 app.use('/courses', courseRouter)

@@ -1,3 +1,6 @@
 .all-tiles{
-    background-color: aqua;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
