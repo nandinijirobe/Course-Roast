@@ -73,11 +73,11 @@ router.post('/add', async (req, res) => {
 
 })
 
-router.get('/:code', async (req, res) => {
+router.get('/:course_id', async (req, res) => {
   // Get course page details
   
   try {
-    const results = await getCourse(req.params.code)
+    const results = await getCourse(req.params.course_id)
     res.status(200).json({
       status: "success",
       data: results

@@ -1,4 +1,6 @@
 import db from '../config/db.js'
+
+import { getReviews } from './review.js'
 // Course Queries
 // 
 /**
@@ -282,11 +284,13 @@ export async function addCourse (reqBody = {}) {
 }
 */
 
-export async function getCourse (code = "") {
-  const sqlQuery = `SELECT title, code, type, credits_ug, credits_g, website, rating, difficulty, hours FROM courses WHERE code = ?;`
+export async function getCourse (course_id = "") {
+  const sqlQuery = `SELECT title, code, type, credits_ug, credits_g, website, rating, difficulty, hours FROM courses WHERE course_id = ?;`
   try {
       
-      const [results, fields] = await db.query(sqlQuery, [code])
+      let [results, fields] = await db.query(sqlQuery, [course_id])
+      let reviews = await getReviews(course_id)
+      results[0]['reviews'] = reviews
       return results
   } catch (err) {
       console.log(err)
