@@ -44,7 +44,8 @@ export default function Course (props) {
                 <ScoreBoard hours = {courseDetails.hours} difficulty = {courseDetails.difficulty}/>
                 <RatingGraph/>
             </div>
-            <ReviewsDisplay reviews = {courseDetails.reviews}/>
+            { courseDetails.reviews ? (<ReviewsDisplay reviews = {courseDetails.reviews}/>) :
+            <></>}
         </>
     )
 }
