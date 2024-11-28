@@ -31,7 +31,7 @@ export default function CourseTiles() {
 
             {/* TODO round the rating accordingly to .1 decimal point */}
             {courseData.map(course => (
-                <Tile key={course.course_id} courseCode={course.code} courseName={course.title} courseType={course.type} courseOverallRating={course.rating} />
+                <Tile path={`/course/${course.course_id}`} key={course.course_id} courseCode={course.code} courseName={course.title} courseType={course.type} courseOverallRating={course.rating} />
             ))}
         </div>
     );
