@@ -10,7 +10,7 @@ function App() {
       <Routes>
           <Route exact path="/" element={<Landing />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/course" element={<Course />} />
+          <Route path="/course/:id" element={<Course />} />
           {/* Paths for the future - as we work on them */}
           {/*<Route path="/review" element={< />} /> */}
       </Routes>

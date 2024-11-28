@@ -29,15 +29,9 @@ export default function CourseTiles() {
     return (
         <div className= {styles["all-tiles"]}>
 
-            <Tile courseCode = "CS 111" courseName = "Program Design I" courseType = "Required Elective" courseOverallRating= {4.9}/>
-            <Tile courseCode = "CS 112" courseName = "Program Design II" courseType = "Required Elective" courseOverallRating= {4.5}/>
-            <Tile courseCode = "CS 151" courseName = "Mathematical Foundations of Computing" courseType = "Required Elective" courseOverallRating= {3.7}/>
-            <Tile courseCode = "CS 211" courseName = "Programming Practicum" courseType = "Technical Elective" courseOverallRating= {2.2}/>
-            <Tile courseCode = "CS 251" courseName = "Data Structures" courseType = "Technical Elective" courseOverallRating= {1.1}/>
-            <Tile courseCode = "CS 477" courseName = "Public Policy, Legal, and Ethical Issues in Computing, Privacy, and Security" courseType = "Technical Elective" courseOverallRating= {0.5}/>
-
+            {/* TODO round the rating accordingly to .1 decimal point */}
             {courseData.map(course => (
-                <Tile key={course.code} courseCode={course.code} courseName={course.title} courseType={course.type} courseOverallRating={1.2} />
+                <Tile key={course.course_id} courseCode={course.code} courseName={course.title} courseType={course.type} courseOverallRating={course.rating} />
             ))}
         </div>
     );

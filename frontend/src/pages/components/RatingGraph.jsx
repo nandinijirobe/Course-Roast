@@ -10,6 +10,7 @@ import {
 } from "recharts";
 
 const RatingGraph = () => {
+  // Make a function to actually compute scores from backend
   const data = [
     { name: "1-star", users: 2000 },
     { name: "2-star", users: 1500 },

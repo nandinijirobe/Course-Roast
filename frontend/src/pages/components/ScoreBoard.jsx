@@ -7,10 +7,10 @@ export default function ScoreBoard(props) {
     return (
         <div className = {styles["score-board-container"]}>
             <div className = {styles["hrs-week-title"]}>Hours/Week:</div>
-            <div className = {styles["hrs-week-value"]}>{10.2}</div>
+            <div className = {styles["hrs-week-value"]}>{props.hours}</div>
             <div className = {styles["scores"]}>
                 <div>Avg Difficulty:</div>
-                <progress className={styles.progressBar} value={4} max={5} />
+                <progress className={styles.progressBar} value={props.difficulty} max={5} />
                 <div>Avg Technical Score:</div>
                 <progress className={styles.progressBar} value={1} max={5} />
                 <div>Avg Creativity Score:</div>

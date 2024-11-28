@@ -5,11 +5,11 @@ import { useNavigate } from 'react-router-dom';
 export default function Tile(props) {
     const navigate = useNavigate();
 
-    const handleClick = () => {
+    const handleClick = (course_id) => {
         // Redirect to a dynamic course page
         // Should be updated to work with any course ('/CS111', '/CS251')
         // When ready to test use: '/${courseName}
-        navigate(`/course`);
+        navigate(`/course/${course_id}`);
       };
 
     return (
@@ -17,7 +17,7 @@ export default function Tile(props) {
                         ${props.courseOverallRating >= 4 ?
                           styles['high-rated']: props.courseOverallRating >= 2 ? 
                           styles['mid-rated']: styles['low-rated']}`}
-            onClick={handleClick}
+            onClick={handleClick(props.course_id)}
             style={{ cursor: 'pointer' }}
         >
             <div className={styles["cardLeft"]}>
