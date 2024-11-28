@@ -1,7 +1,7 @@
 import styles from './Dashboard.module.css';
-import React, {useState} from 'react';
-import CourseTiles from './components/TilesDisplay'
+import React, {useState, useEffect} from 'react';
 import Logo from './components/Logo'
+import Tile from './components/Tile';
 import Popup from "reactjs-popup"; // Import reactjs-popup
 import "reactjs-popup/dist/index.css"; // Popup styles
 import { FaSort } from "react-icons/fa";
@@ -10,22 +10,26 @@ import { FaSearch } from "react-icons/fa";
 
 
 export default function Dashboard () {
+
+    const [courseData, setCourseData] = useState([])
     // Popup status for Filter
     const [isPopupOpen, setIsPopupOpen] = useState(false); // state to control popup visibility, by default false until click
+    // State for Course Type Checkboxes
+    const [isRequiredChecked, setIsRequiredChecked] = useState(false);
+    const [isTechnicalChecked, setIsTechnicalChecked] = useState(false);
+    // Popup status for Sort
+    const [isPopupOpen2, setIsPopupOpen2] = useState(false); 
+    const [searchTerm, setSearchTerm] = useState("");
+
     const togglePopup = () => {
         // console.log('Toggle popup called'); // Debugging log
         setIsPopupOpen(!isPopupOpen); // to toggle the state each time setIsPopupOpen function
     };
-    // Popup status for Sort
-    const [isPopupOpen2, setIsPopupOpen2] = useState(false); 
+    
     const togglePopup2 = () => {
         // console.log('Toggle popup called'); // Debugging log
         setIsPopupOpen2(!isPopupOpen2); 
     };
-
-     // State for Course Type Checkboxes
-     const [isRequiredChecked, setIsRequiredChecked] = useState(false);
-     const [isTechnicalChecked, setIsTechnicalChecked] = useState(false);
  
      // Handlers for Checkboxes
      const handleRequiredChange = () => {
@@ -37,6 +41,43 @@ export default function Dashboard () {
          setIsTechnicalChecked(!isTechnicalChecked);
          if (!isTechnicalChecked) setIsRequiredChecked(false); // Uncheck "Required" when "Technical" is checked
      };
+
+    const handleSearch = async () => {
+        try {
+            const response = await fetch(`http://localhost:3000/courses?q=${searchTerm}`, {
+                method : 'GET'
+            })
+            if (!response.ok) {
+                throw new Error('Error in fetching Data')
+            }
+            const res = await response.json()
+            setCourseData(res.data)
+           
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
+
+    const getCourseData = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/courses', {
+                method : 'GET'
+            })
+            if (!response.ok) {
+                throw new Error('Error in fetching Data')
+            }
+            const res = await response.json()
+            console.log(res)
+            setCourseData(res.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect (() => {
+        getCourseData()
+    }, [])
 
     return(
         <>
@@ -52,15 +93,21 @@ export default function Dashboard () {
                         type={styles["text"]} 
                         className={styles["search-bar"]} 
                         placeholder={styles["Search" ]}
+                        onChange={(e) => setSearchTerm(e.target.value)}
                     />
-                    <button className={styles["search-button"]}><FaSearch className={styles["search-icon"]}/></button>
+                    <button className={styles["search-button"]} onClick={handleSearch}><FaSearch className={styles["search-icon"]}/></button>
                     <button className={styles["filter-button"]} onClick={togglePopup}><FaFilter className={styles["filter-icon"]}/>Filter</button>
                     <button className={styles["sortBy-button"]} onClick={togglePopup2}><FaSort className={styles["sort-icon"]}/> Sort</button>
                 </div>
 
             </div>
 
-            <CourseTiles/>
+            <div className= {styles["all-tiles"]}>
+                {/* TODO round the rating accordingly to .1 decimal point */}
+                {courseData.map(course => (
+                    <Tile path={`/course/${course.course_id}`} key={course.course_id} courseCode={course.code} courseName={course.title} courseType={course.type} courseOverallRating={course.rating} />
+                ))}
+            </div>
 
             {/* Filter Popup */}
             <Popup open={isPopupOpen} onClose={() => setIsPopupOpen(false)} modal>

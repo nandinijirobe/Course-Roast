@@ -21,7 +21,14 @@
     padding-top: 80px; 
     box-sizing: border-box;
 } */
-
+ 
+.all-tiles{
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: white;  /*FOR TESTING TO SEE BOUNDS SET TO ANOTHER COLOR */
+}
 .container {
     display: flex; 
     justify-content: flex-start;
