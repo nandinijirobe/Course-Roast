@@ -3,7 +3,7 @@ USE cs480db;
 -- create table and insert values into courses
 CREATE TABLE courses (
     course_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(50) NOT NULL,
+    title VARCHAR(100) NOT NULL,
     code VARCHAR(10) NOT NULL,
     type VARCHAR(20),
     level INT NOT NULL,
