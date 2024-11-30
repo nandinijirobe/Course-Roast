@@ -117,7 +117,6 @@ export default function Dashboard () {
         }
 
         filters = filters.join("&")
-        console.log(filters)
 
         let filterURL = `http://localhost:3000/courses/filter?${filters}`
 
