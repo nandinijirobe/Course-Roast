@@ -20,6 +20,16 @@ export default function Dashboard () {
     // Popup status for Sort
     const [isPopupOpen2, setIsPopupOpen2] = useState(false); 
     const [searchTerm, setSearchTerm] = useState("");
+    const [filters, setFilters] = useState({level : [], type : ""})
+
+    const [filterLevels, setFilterLevels] = useState(
+        {
+            100 : false,
+            200 : false,
+            300 : false,
+            400 : false,
+        }
+      );
 
     const togglePopup = () => {
         // console.log('Toggle popup called'); // Debugging log
@@ -39,8 +49,16 @@ export default function Dashboard () {
  
      const handleTechnicalChange = () => {
          setIsTechnicalChecked(!isTechnicalChecked);
-         if (!isTechnicalChecked) setIsRequiredChecked(false); // Uncheck "Required" when "Technical" is checked
+         if (!isTechnicalChecked) setIsRequiredChecked(false); // Uncheck "Required" when "Technical" is checked     
      };
+
+     const handleFilterLevels = (e) => {
+        const { name, value } = e.target;
+        setFilterLevels((prev) => ({
+            ...prev, 
+            [name]: !(filterLevels[name])
+        }));
+    }
 
     const handleSearch = async () => {
         try {
@@ -59,6 +77,65 @@ export default function Dashboard () {
 
     }
 
+    const handleSort = async () => {
+        try {
+            const response = await fetch(`http://localhost:3000/courses?q=${searchTerm}`, {
+                method : 'GET'
+            })
+            if (!response.ok) {
+                throw new Error('Error in fetching Data')
+            }
+            const res = await response.json()
+            setCourseData(res.data)
+           
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
+
+    const handleFilter = async () => {
+        let filters = []
+        let filterclasses = []
+        // Check for whether either required or technical have been checked
+        if (isRequiredChecked) {
+            filters.push("type=required")
+        }
+        else if (isTechnicalChecked) {
+            filters.push("type=technical")
+        }
+
+        for (const level in filterLevels) {
+            if (filterLevels[level]) {
+                filterclasses.push(level)
+            }
+        }
+
+        filterclasses = filterclasses.join()
+        if (filterclasses.length > 0) {
+            filters.push(`level=${filterclasses}`)
+        }
+
+        filters = filters.join("&")
+        console.log(filters)
+
+        let filterURL = `http://localhost:3000/courses/filter?${filters}`
+
+        try {
+            const response = await fetch(filterURL, {
+                method : 'GET'
+            })
+            if (!response.ok) {
+                throw new Error('Error in fetching Data')
+            }
+            const res = await response.json()
+            setCourseData(res.data)
+           
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     const getCourseData = async () => {
         try {
             const response = await fetch('http://localhost:3000/courses', {
@@ -68,7 +145,6 @@ export default function Dashboard () {
                 throw new Error('Error in fetching Data')
             }
             const res = await response.json()
-            console.log(res)
             setCourseData(res.data)
         } catch (err) {
             console.log(err)
@@ -119,13 +195,16 @@ export default function Dashboard () {
                 <div className={styles["checkbox-group"]}>
                     <h3>Class-Level</h3>
                     <label>
-                        <input type="checkbox" /> 100-level
+                        <input type="checkbox" name = "100" onChange={handleFilterLevels} checked = {filterLevels[100]} /> 100-level
                     </label>
                     <label>
-                        <input type="checkbox" /> 200-level
+                        <input type="checkbox" name = "200" onChange={handleFilterLevels} checked = {filterLevels[200]} /> 200-level
                      </label>
                      <label>
-                        <input type="checkbox" /> 300-level
+                        <input type="checkbox" name = "300" onChange={handleFilterLevels} checked = {filterLevels[300]} /> 300-level
+                    </label>
+                    <label>
+                        <input type="checkbox" name = "400" onChange={handleFilterLevels} checked = {filterLevels[400]} /> 400-level
                     </label>
                 </div>
 
@@ -157,8 +236,8 @@ export default function Dashboard () {
                     <button
                         className={styles["save-button"]}
                         onClick={() => {
-                        // console.log("Filters saved"); // Debugging log
-                        setIsPopupOpen(false);
+                            setIsPopupOpen(false);
+                            handleFilter()
                         }}
                         >
                         Save
