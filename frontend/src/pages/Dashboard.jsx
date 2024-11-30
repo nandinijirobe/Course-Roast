@@ -251,24 +251,46 @@ export default function Dashboard () {
                     <h2>Sort</h2>
                     {/* Class-Level Section */}
                     <div className={styles["checkbox-group2"]}>
-                        <label>
-                            <input type="checkbox" /> Level
-                        </label>
-                        <label>
-                            <input type="checkbox" /> Class Code
-                        </label>
-                        <label>
-                            <input type="checkbox" /> Class Title
-                        </label>
-                        <label>
-                            <input type="checkbox" /> Credits
-                        </label>
-                        <label>
-                            <input type="checkbox" /> Rating
-                        </label>
-                        <label>
-                            <input type="checkbox" /> Difficulty
-                        </label>
+                        <div className={styles["sort-group"]}>
+                            <div className="category-name">Level</div>
+                            <select id="level" className={styles["dropdown"]}>
+                                <option value="ascending">Ascending</option>
+                                <option value="none">None</option>
+                                <option value="descending">Descending</option>
+                            </select>
+                        </div>
+                        <div className={styles["sort-group"]}>
+                            <div className="category-name">Class Code</div>
+                            <select id="class_code" className={styles["dropdown"]}>
+                                <option value="ascending">Ascending</option>
+                                <option value="none">None</option>
+                                <option value="descending">Descending</option>
+                            </select>
+                        </div>
+                        <div className={styles["sort-group"]}>
+                            <div className="category-name">Class Title</div>
+                            <select id="title" className={styles["dropdown"]}>
+                                <option value="ascending">Ascending</option>
+                                <option value="none">None</option>
+                                <option value="descending">Descending</option>
+                            </select>
+                        </div>
+                        <div className={styles["sort-group"]}>
+                            <div className="category-name">Rating</div>
+                            <select id="rating" className={styles["dropdown"]}>
+                                <option value="ascending">Ascending</option>
+                                <option value="none">None</option>
+                                <option value="descending">Descending</option>
+                            </select>
+                        </div>
+                        <div className={styles["sort-group"]}>
+                            <div className="category-name">Difficulty</div>
+                            <select id="difficulty" className={styles["dropdown"]}>
+                                <option value="ascending">Ascending</option>
+                                <option value="none">None</option>
+                                <option value="descending">Descending</option>
+                            </select>
+                        </div>
                     </div>
                     {/* Buttons */}
                     <div className={styles["button-group2"]}>
