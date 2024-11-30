@@ -107,7 +107,6 @@ export default function Dashboard () {
         sort = sort.join()
 
         let fetchURL = `http://localhost:3000/courses/sort?q=${sort}`
-        console.log(fetchURL)
 
         try {
             const response = await fetch(fetchURL, {
