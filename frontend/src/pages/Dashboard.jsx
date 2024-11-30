@@ -20,7 +20,6 @@ export default function Dashboard () {
     // Popup status for Sort
     const [isPopupOpen2, setIsPopupOpen2] = useState(false); 
     const [searchTerm, setSearchTerm] = useState("");
-    const [filters, setFilters] = useState({level : [], type : ""})
 
     const [filterLevels, setFilterLevels] = useState(
         {
@@ -31,13 +30,21 @@ export default function Dashboard () {
         }
       );
 
+      const [sortCols, setSortCols] = useState(
+        {
+            level : 'none',
+            title : 'none',
+            code : 'none',
+            rating : 'none',
+            difficulty : 'none'
+        }
+      );
+
     const togglePopup = () => {
-        // console.log('Toggle popup called'); // Debugging log
         setIsPopupOpen(!isPopupOpen); // to toggle the state each time setIsPopupOpen function
     };
     
     const togglePopup2 = () => {
-        // console.log('Toggle popup called'); // Debugging log
         setIsPopupOpen2(!isPopupOpen2); 
     };
  
@@ -60,6 +67,14 @@ export default function Dashboard () {
         }));
     }
 
+    const handleSortCols = (e) => {
+        const { id, value } = e.target;
+        setSortCols((prev) => ({
+            ...prev, 
+            [id]: value
+        }));
+    }
+
     const handleSearch = async () => {
         try {
             const response = await fetch(`http://localhost:3000/courses?q=${searchTerm}`, {
@@ -78,8 +93,24 @@ export default function Dashboard () {
     }
 
     const handleSort = async () => {
+        let sort = []
+
+        for (const col in sortCols) {
+            if (sortCols[col] == 'ascending') {
+                sort.push(`%2B${col}`)
+            }
+            else if (sortCols[col] == 'descending') {
+                sort.push(`-${col}`)
+            }
+        }
+
+        sort = sort.join()
+
+        let fetchURL = `http://localhost:3000/courses/sort?q=${sort}`
+        console.log(fetchURL)
+
         try {
-            const response = await fetch(`http://localhost:3000/courses?q=${searchTerm}`, {
+            const response = await fetch(fetchURL, {
                 method : 'GET'
             })
             if (!response.ok) {
@@ -253,7 +284,7 @@ export default function Dashboard () {
                     <div className={styles["checkbox-group2"]}>
                         <div className={styles["sort-group"]}>
                             <div className="category-name">Level</div>
-                            <select id="level" className={styles["dropdown"]}>
+                            <select id="level" className={styles["dropdown"]} onChange={handleSortCols}>
                                 <option value="ascending">Ascending</option>
                                 <option value="none">None</option>
                                 <option value="descending">Descending</option>
@@ -261,7 +292,7 @@ export default function Dashboard () {
                         </div>
                         <div className={styles["sort-group"]}>
                             <div className="category-name">Class Code</div>
-                            <select id="class_code" className={styles["dropdown"]}>
+                            <select id="code" className={styles["dropdown"]} onChange={handleSortCols}>
                                 <option value="ascending">Ascending</option>
                                 <option value="none">None</option>
                                 <option value="descending">Descending</option>
@@ -269,7 +300,7 @@ export default function Dashboard () {
                         </div>
                         <div className={styles["sort-group"]}>
                             <div className="category-name">Class Title</div>
-                            <select id="title" className={styles["dropdown"]}>
+                            <select id="title" className={styles["dropdown"]} onChange={handleSortCols}>
                                 <option value="ascending">Ascending</option>
                                 <option value="none">None</option>
                                 <option value="descending">Descending</option>
@@ -277,7 +308,7 @@ export default function Dashboard () {
                         </div>
                         <div className={styles["sort-group"]}>
                             <div className="category-name">Rating</div>
-                            <select id="rating" className={styles["dropdown"]}>
+                            <select id="rating" className={styles["dropdown"]} onChange={handleSortCols}>
                                 <option value="ascending">Ascending</option>
                                 <option value="none">None</option>
                                 <option value="descending">Descending</option>
@@ -285,7 +316,7 @@ export default function Dashboard () {
                         </div>
                         <div className={styles["sort-group"]}>
                             <div className="category-name">Difficulty</div>
-                            <select id="difficulty" className={styles["dropdown"]}>
+                            <select id="difficulty" className={styles["dropdown"]} onChange={handleSortCols}>
                                 <option value="ascending">Ascending</option>
                                 <option value="none">None</option>
                                 <option value="descending">Descending</option>
@@ -303,8 +334,8 @@ export default function Dashboard () {
                         <button
                             className={styles["save-button2"]}
                             onClick={() => {
-                            // console.log("Filters saved"); // Debugging log
                             setIsPopupOpen2(false);
+                            handleSort()
                             }}
                         >
                         Save

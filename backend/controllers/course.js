@@ -35,7 +35,6 @@ export async function getAllCourses (query = {}) {
       sqlQuery = `SELECT course_id, title, code, rating, difficulty, type FROM courses WHERE title LIKE ? OR code LIKE ?;`
     }
     try {
-      console.log(sqlQuery)
       const [results, fields] = await db.query(sqlQuery, sqlParams)
       return results
     } catch (err) {
@@ -126,7 +125,7 @@ export async function sortAllCourses (query = {}) {
 */
 
 export async function filterCourses (filters = {}) {
-  console.log(filters)
+
   let sqlQuery = ""
   let sqlParams = []
   let paramValues = []
