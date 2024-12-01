@@ -280,41 +280,39 @@ export default function Dashboard () {
                 <div className={styles["popup-content2"]}>
                     <h2>Sort</h2>
                     {/* Class-Level Section */}
-                    <div className={styles["checkbox-group2"]}>
-                        <div className={styles["sort-group"]}>
+                    <div className={styles["categories-and-selects"]}>
+                        <div className={styles["sort-categories"]}>
                             <div className="category-name">Level</div>
+                            <div className="category-name">Class Code</div>
+                            <div className="category-name">Class Title</div>
+                            <div className="category-name">Rating</div>
+                            <div className="category-name">Difficulty</div>
+                        </div>
+                        <div className={styles["all-selects"]}>
                             <select id="level" className={styles["dropdown"]} onChange={handleSortCols}>
                                 <option value="ascending">Ascending</option>
                                 <option value="none">None</option>
                                 <option value="descending">Descending</option>
                             </select>
-                        </div>
-                        <div className={styles["sort-group"]}>
-                            <div className="category-name">Class Code</div>
+        
                             <select id="code" className={styles["dropdown"]} onChange={handleSortCols}>
                                 <option value="ascending">Ascending</option>
                                 <option value="none">None</option>
                                 <option value="descending">Descending</option>
                             </select>
-                        </div>
-                        <div className={styles["sort-group"]}>
-                            <div className="category-name">Class Title</div>
+                     
                             <select id="title" className={styles["dropdown"]} onChange={handleSortCols}>
                                 <option value="ascending">Ascending</option>
                                 <option value="none">None</option>
                                 <option value="descending">Descending</option>
                             </select>
-                        </div>
-                        <div className={styles["sort-group"]}>
-                            <div className="category-name">Rating</div>
+                      
                             <select id="rating" className={styles["dropdown"]} onChange={handleSortCols}>
                                 <option value="ascending">Ascending</option>
                                 <option value="none">None</option>
                                 <option value="descending">Descending</option>
                             </select>
-                        </div>
-                        <div className={styles["sort-group"]}>
-                            <div className="category-name">Difficulty</div>
+                        
                             <select id="difficulty" className={styles["dropdown"]} onChange={handleSortCols}>
                                 <option value="ascending">Ascending</option>
                                 <option value="none">None</option>

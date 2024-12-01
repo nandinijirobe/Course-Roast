@@ -317,3 +317,24 @@
     background-color: #5d8c5f; /* Darker green on hover */
     transform: scale(1.05); /* Slight scale effect */
 }
+
+
+.categories-and-selects{
+    display:flex;
+    font-family: Inter;
+    color: darkgray;
+    gap: 1rem;
+    font-size: 1rem;
+    /* justify-content: center; */
+}
+
+.all-selects{
+    display: flex;
+    gap:0.1rem;
+    flex-direction: column;
+}
+
+.dropdown{
+    font-family: Inter;
+
+}
