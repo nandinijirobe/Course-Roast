@@ -6,11 +6,11 @@ import {Rate} from "antd";
 function RatingGraph (props) {
 
   let ratingsData = [
-    { name: "1-star", users: 0 },
-    { name: "2-star", users: 0 },
-    { name: "3-star", users: 0 },
-    { name: "4-star", users: 0 },
-    { name: "5-star", users: 0 }
+    { name: "1-star", users: 1 },
+    { name: "2-star", users: 1 },
+    { name: "3-star", users: 1 },
+    { name: "4-star", users: 1 },
+    { name: "5-star", users: 1 }
   ];
 
   function createDistribution () {
