@@ -7,18 +7,19 @@ export default function Review(props) {
                          ${props.overallRating >= 4 ? styles['high-rated-border']: 
                           props.overallRating >= 2 ? styles['mid-rated-border']: 
                           styles['low-rated-border']}`}>
+            <div className={styles["sem-and-comment"]}>
+                <div className={`${styles["cardLeft"]}
+                                ${props.overallRating >= 4 ? styles['high-rated-bg']: 
+                                props.overallRating >= 2 ? styles['mid-rated-bg']: 
+                                styles['low-rated-bg']}`}> {/*card-left*/}
+                    <div className={styles["sem-year-text"]}>{props.semester} {props.year}</div> 
+                </div>
+                
 
-            <div className={`${styles["cardLeft"]}
-                             ${props.overallRating >= 4 ? styles['high-rated-bg']: 
-                               props.overallRating >= 2 ? styles['mid-rated-bg']: 
-                               styles['low-rated-bg']}`}> {/*card-left*/}
-                <div className={styles["sem-year-text"]}>{props.semester} {props.year}</div> 
-            </div>
-            
-
-            <div className={styles["comment-grade"]}> {/* card-middle*/}
-                <div className = {styles["grade"]}>Grade Received: {props.grade}</div>
-                <div className = {styles["comment"]}>{props.comment}</div>
+                <div className={styles["comment-grade"]}> {/* card-middle*/}
+                    <div className = {styles["grade"]}>Grade Received: {props.grade}</div>
+                    <div className = {styles["comment"]}>{props.comment}</div>
+                </div>
             </div>
 
             <div className={styles["stats"]}> {/* card-right*/}

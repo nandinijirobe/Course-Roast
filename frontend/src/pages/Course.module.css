@@ -24,6 +24,8 @@
     
 }
 
+
+
 .course-title {
     font-size: 2rem;
     width: auto; /* Prevent unnecessary width constraint */
@@ -45,4 +47,5 @@
 }
 .course-stats{
     display: flex;
+    gap:2rem;
 }

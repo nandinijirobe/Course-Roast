@@ -1,13 +1,7 @@
 import React from "react";
 import styles from "./RatingGraph.module.css";
-import {
-  Tooltip,
-  BarChart,
-  XAxis,
-  YAxis,
-  Legend,
-  Bar,
-} from "recharts";
+import { BarChart, Bar, ResponsiveContainer } from 'recharts';
+import {Rate} from "antd";
 
 const RatingGraph = () => {
   // Make a function to actually compute scores from backend
@@ -21,26 +15,23 @@ const RatingGraph = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.heading}>Social Media Users</h1>
-      <div className={styles.chartWrapper}>
-        <BarChart
-          width={500}
-          height={300}
-          data={data}
-          margin={{top: 5, right: 30, left: 80, bottom: 5,}}
-          barSize={20}
-        >
-          <XAxis
-            dataKey="name"
-            scale="point"
-            padding={{ left: 10, right: 10 }}
-          />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="users" fill="#8884d8" background={{ fill: "#eee" }} />
-        </BarChart>
+
+      <div className = {styles.top_half}>
+        <div className={styles.graph_title}>Reviews and Ratings</div>
+        <div className= {styles.rating_stars_caption}>
+          <div className= {styles.rating}>4.9</div>
+          <div className= {styles.stars_caption}>
+            <Rate defaultValue={5} allowHalf disabled className = {styles.stars}/>
+            {/* <div className={styles.stars}>⭐⭐⭐⭐⭐</div> */}
+            <div className={styles.caption}>Based on 565 ratings</div>
+          </div>
+        </div>
       </div>
+        <ResponsiveContainer width="90%" height="60%" className={styles.chartWrapper}> {/*actual-graph*/}
+          <BarChart data={data}>
+            <Bar dataKey="users" fill="#8884d8" background={{ fill: "whitesmoke" }} radius={[10, 10, 10, 10]}/>
+          </BarChart>
+        </ResponsiveContainer>
     </div>
   );
 };

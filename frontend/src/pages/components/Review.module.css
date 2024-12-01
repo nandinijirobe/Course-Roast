@@ -39,9 +39,15 @@
 }
 
 .review-container {
-    display: flex; /* Use flexbox to align children side by side */
+    display: flex; 
     border-radius: 1.5rem;
     margin: 1rem 0rem;
+    justify-content: space-between;
+}
+
+
+.sem-and-comment{
+    display: flex; 
     justify-content: space-between;
 }
 
@@ -79,8 +85,6 @@
     background-color: var(--white);
     font-family: Inter;
     padding: 1rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
 }
 
 .grade{

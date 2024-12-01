@@ -1,15 +1,60 @@
 /* RatingGraph.module.css */
+:root {
+  --red: #cb7d8c;
+  --green: #80b686;
+  --yellow: #e9b96a;
+  --dark-gray: #31302F;
+  --mid-gray:#57524D;
+  --light-gray: #8a8882;
+  --white: #FAFAFA;
+}
+
 .container {
-    text-align: center;
-    background-color: aqua;
+    font-family: Inter;
+    background-color: whitesmoke;
+    overflow: visible;
+    width: 100rem;
+    margin:3rem 0rem;
+    padding: 3rem 0rem;
+    
   }
+
+.graph_title{
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
   
-  .chartWrapper {
-    display: inline-block;
-  }
-  
-  .heading {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
+.top_half {
+  background-color:whitesmoke;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0rem 1rem 1rem 1rem;
+}
+
+.rating_stars_caption{
+  background-color: whitesmoke;
+  display: flex;
+}
+
+.rating {
+  font-size: 5.5rem;
+  margin-right: 1rem;
+  /* background-color: #80b686; */
+}
+.stars_caption{
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background-color: whitesmoke;
+}
+
+.stars{
+  font-size: 2.5rem;
+  color:var(--dark-gray);
+}
+
+
+.caption{
+  font-family: 9rem;
+  color:grey;
+}

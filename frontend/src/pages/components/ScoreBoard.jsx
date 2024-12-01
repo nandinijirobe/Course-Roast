@@ -6,6 +6,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 export default function ScoreBoard(props) {
     return (
         <div className = {styles["score-board-container"]}>
+            
             <div className = {styles["hrs-week-title"]}>Hours/Week:</div>
             <div className = {styles["hrs-week-value"]}>{props.hours}</div>
             <div className = {styles["scores"]}>
