@@ -6,6 +6,8 @@ import ReviewsDisplay from './components/ReviewsDisplay'
 import Logo from './components/Logo'
 import ScoreBoard from './components/ScoreBoard';
 import RatingGraph from './components/RatingGraph';
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { Link } from 'react-router-dom';
 
 
 export default function Course () {
@@ -35,7 +37,11 @@ export default function Course () {
 
     return(
         <>
+            
             <Logo/>
+            <Link to="/dashboard">
+                <button className = {styles["back-btn"] }><IoMdArrowRoundBack className = {styles["back-icon"]}/> back</button>
+            </Link>
             <div className = {styles["title-and-btn"]}>
                 <div className = {styles["course-title"]}>{courseDetails.code}: {courseDetails.title}</div>
                 <button className = {styles["spill-beans-btn"]}>Spill the Beans! 🫘</button>

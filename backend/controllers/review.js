@@ -16,16 +16,16 @@ export async function getReviews (course_id = "") {
 }
 
 
-// Would this be a POST technically???
-// First, get course_id, average(overall_rating, overall_diff, work_hrs) from the reviews
+// Put Request but is not an API call
+// First, get course_id, average(overall_rating, overall_diff, technical, creative, theory, work_hrs) from the reviews
 // Second, send numbers to the respective overall course standings
 export async function updateOverallCourse (course_id = "") {
-    const query = 'SELECT course_id, AVG(rating) as avg_rating, AVG(difficulty) as avg_difficulty, AVG(hours) as avg_hours FROM reviews where course_id = ?;'
+    const query = 'SELECT course_id, AVG(rating) as avg_rating, AVG(difficulty) as avg_difficulty, AVG(hours) as avg_hours, AVG(technical), AVG(creative), AVG(theory) FROM reviews where course_id = ?;'
 
     try {
         const [results, fields] = await db.query(query, [course_id])
         
-        let values = { rating: results[0].avg_rating, difficulty: results[0].avg_difficulty, hours: results[0].avg_hours, course_id: results[0].course_id }
+        let values = { rating: results[0].avg_rating, difficulty: results[0].avg_difficulty, hours: results[0].avg_hours, technical: results[0].technical, creative: results[0].creative, theory: results[0].theory, course_id: results[0].course_id }
         
         const course_data = await updateCourse(values)
         return course_data

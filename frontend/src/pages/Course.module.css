@@ -20,14 +20,14 @@
     display: flex;
     justify-content: space-between; /* Pushes items to the far edges */
     align-items: center; /* Ensures items are vertically aligned */
-    margin: 2rem 0rem;
-    
+    margin: 1rem 0rem;
 }
 
 
-
 .course-title {
-    font-size: 2rem;
+    font-size: 48px;  /* Adjust the size to make it big */
+    font-weight: bold; /* Make it bold */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Small shadow under the text */
     width: auto; /* Prevent unnecessary width constraint */
     height: auto; /* Prevent unnecessary height constraint */
     margin: 1rem;
@@ -45,6 +45,52 @@
     width: fit-content;
     height: auto; /* Prevent unnecessary height constraint */
 }
+
+.back-btn {
+    background: none;              /* No background */
+    border: none;                  /* No border */
+    padding: 10px 20px 2.5px 20px; /* Adjust padding as needed */
+    font-size: 25px;               /* Font size */
+    font-weight: bold;             /* Optional: make the text bold */
+    display: inline-flex;          /* Align text and icon inline */
+    align-items: center;           /* Center vertically */
+    cursor: pointer;              /* Pointer cursor to show it's clickable */
+    text-decoration: none;         /* Remove any underline if it's a link */
+    position: relative;            /* Allow for absolute positioning of the line */
+}
+
+.back-btn::after {
+    content: '';                   /* Empty content for the line */
+    position: absolute;            /* Position it relative to the button */
+    bottom: 0;                     /* Place it at the bottom */
+    left: 25px;                    /* Align it to the left */
+    width: 65%;                    /* Make the line span the full width */
+    height: 2px;                   /* Thickness of the line */
+    background-color: #000;        /* Line color (black in this case) */
+    transform: translateY(5px);    /* Space it slightly below the text */
+    opacity: 0;                    /* Make the line invisible by default */
+    transition: opacity 0.3s;      /* Smooth transition when the line appears */
+}
+
+/* Show the line on hover */
+.back-btn:hover::after {
+    opacity: 1;                    /* Make the line visible when hovering */
+}
+
+/* Optionally, show the line when the button is active (clicked) */
+.back-btn:active::after {
+    opacity: 1;                    /* Make the line visible when clicking */
+}
+  
+.back-btn span {
+    margin-right: 10px;             /* Space between the icon and text */
+}
+
+.back-icon {
+    font-size: 25px; /* Adjust icon size using font-size */
+    margin-right: 4px; 
+}
+
 .course-stats{
     display: flex;
     gap:2rem;

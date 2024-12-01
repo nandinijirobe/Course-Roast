@@ -14,9 +14,10 @@
     background-color: whitesmoke;
     overflow: visible;
     width: 100rem;
+    height:30rem;
     margin:3rem 0rem;
-    padding: 3rem 0rem;
-    
+    padding: 2rem 0rem 0rem 1rem;
+    border-radius: 1rem;
   }
 
 .graph_title{

@@ -7,6 +7,8 @@ import "reactjs-popup/dist/index.css"; // Popup styles
 import { FaSort } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
+import ScrollToTop from '../ScrollToTop';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 export default function Dashboard () {
@@ -174,6 +176,7 @@ export default function Dashboard () {
                 throw new Error('Error in fetching Data')
             }
             const res = await response.json()
+            console.log(res)
             setCourseData(res.data)
         } catch (err) {
             console.log(err)
@@ -187,7 +190,7 @@ export default function Dashboard () {
     return(
         <>
             <Logo/>
-
+            <ScrollToTop />
             <div className={styles["container"]}>
                 <div className={styles["pageTitle"]}>
                     <h1>Dashboard</h1>
