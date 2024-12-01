@@ -25,7 +25,7 @@ export default function Review(props) {
             <div className={styles["stats"]}> {/* card-right*/}
                         <div className={styles["rating"]}>Rating: {props.overallRating}/5</div>
                         <div className={styles["difficulty"]}>Difficulty: {props.difficulty}/5</div>
-                        <div className={styles["hours-week"]}>Hours/Week:{props.hoursPerWeek}/10</div>
+                        <div className={styles["hours-week"]}>Hours/Week: {props.hoursPerWeek}</div>
             </div>
 
         </div>

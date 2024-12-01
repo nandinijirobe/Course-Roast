@@ -8,7 +8,7 @@ import ScoreBoard from './components/ScoreBoard';
 import RatingGraph from './components/RatingGraph';
 
 
-export default function Course (props) {
+export default function Course () {
     const { id } = useParams();
 
     const [courseDetails, setCourseDetails] = useState([])
@@ -42,7 +42,7 @@ export default function Course (props) {
             </div>
             <div className = {styles["course-stats"]}> 
                 <ScoreBoard hours = {courseDetails.hours} difficulty = {courseDetails.difficulty}/>
-                <RatingGraph/>
+                <RatingGraph rating = {courseDetails.rating} reviews = {courseDetails.reviews}/>
             </div>
             { courseDetails.reviews ? (<ReviewsDisplay reviews = {courseDetails.reviews}/>) :
             <></>}

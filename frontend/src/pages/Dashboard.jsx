@@ -210,7 +210,7 @@ export default function Dashboard () {
             <div className= {styles["all-tiles"]}>
                 {/* TODO round the rating accordingly to .1 decimal point */}
                 {courseData.map(course => (
-                    <Tile path={`/course/${course.course_id}`} key={course.course_id} courseCode={course.code} courseName={course.title} courseType={course.type} courseOverallRating={course.rating} />
+                    <Tile path={`/course/${course.course_id}`} key={course.course_id} courseCode={course.code} courseName={course.title} courseType={course.type} courseOverallRating={course.rating.toFixed(1)} />
                 ))}
             </div>
 
