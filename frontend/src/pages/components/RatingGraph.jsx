@@ -5,18 +5,21 @@ import {Rate} from "antd";
 
 function RatingGraph (props) {
 
-  let ratingsData = [
+  const [ratingsData, setRatingsData] = useState([
     { name: "1-star", users: 1 },
     { name: "2-star", users: 1 },
     { name: "3-star", users: 1 },
     { name: "4-star", users: 1 },
     { name: "5-star", users: 1 }
-  ];
+  ]);
 
   function createDistribution () {
     for (const val in props.reviews) {
       const num = Math.round(props.reviews[val].rating)
       if (num >= 1 && num <=5 ) {
+        const updatedRatingsData = [...ratingsData];
+        updatedRatingsData[num-1].users += 1;
+        setRatingsData(updatedRatingsData);
         ratingsData[num-1].users += 1
       }
     }

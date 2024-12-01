@@ -176,7 +176,7 @@ export default function Dashboard () {
                 throw new Error('Error in fetching Data')
             }
             const res = await response.json()
-            console.log(res)
+            // console.log(res)
             setCourseData(res.data)
         } catch (err) {
             console.log(err)
