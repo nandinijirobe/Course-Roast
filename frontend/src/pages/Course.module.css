@@ -44,6 +44,12 @@
     white-space: nowrap;
     width: fit-content;
     height: auto; /* Prevent unnecessary height constraint */
+    cursor: pointer;
+}
+
+.spill-beans-btn:hover {
+    background-color: var(--white); 
+    border-color: #d8dcd8; 
 }
 
 .back-btn {

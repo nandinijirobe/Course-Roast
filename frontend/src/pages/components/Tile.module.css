@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans:wght@400;700&display=swap');
 
 :root {
-    --red: #cb7d8c;
+    --red: #dd8496;
     --green: #80b686;
     --yellow: #e9b96a;
     --dark-gray: #31302F;
@@ -70,7 +70,7 @@
     font-family: "Inclusive Sans";
     font-size: 3.5rem;
     font-weight: bold;
-    text-shadow: 0.05rem 0.05rem 0.05rem white; 
+    text-shadow: 0.05rem 0.05rem 0.05rem white;
 }
 
 .courseName {
