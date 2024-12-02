@@ -16,9 +16,8 @@
     border-radius: 1em;
     box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.1);
     width: 90%;
-    max-width: 31.25em; /* 500px converted to em (assuming base font-size is 16px) */
-    max-height: 90vh;
-  	overflow-y:scroll;
+    max-width: 31.25em; /* 500px converted to em */
+    position: relative;
 }
 
 .closeBtn {
@@ -41,6 +40,30 @@
     border-radius: 0.3125em; /* 5px converted to em */
     font-family: Inter, sans-serif;
     font-size: 1em;
+    resize: vertical; /* Allow vertical resizing */
+}
+
+.input {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 0.0625em solid var(--light-gray); /* 1px converted to em */
+    border-radius: 0.3125em; /* 5px converted to em */
+    font-family: Inter, sans-serif;
+    font-size: 1em;
+    box-sizing: border-box; /* Ensures padding is included in the element's total width and height */
+}
+
+.select {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 0.0625em solid var(--light-gray); /* 1px converted to em */
+    border-radius: 0.3125em; /* 5px converted to em */
+    font-family: Inter, sans-serif;
+    font-size: 1em;
+    appearance: none; /* Removes the default select dropdown styling for consistency */
+    background-color: var(--white);
 }
 
 .submitBtn {
@@ -51,4 +74,21 @@
     border-radius: 0.3125em; /* 5px converted to em */
     font-size: 1em;
     cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submitBtn:hover {
+    background-color: var(--dark-green); /* Slightly darker green for hover state */
+}
+
+/* Additional styles for improved visual consistency */
+form {
+    display: flex;
+    flex-direction: column; /* Arrange all input fields vertically */
+    gap: 1em; /* Add consistent spacing between fields */
+}
+
+::placeholder {
+    color: var(--gray); /* Style for placeholder text */
+    opacity: 0.7;
 }
