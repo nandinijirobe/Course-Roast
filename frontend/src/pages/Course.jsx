@@ -43,7 +43,7 @@ export default function Course () {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ review }),
+                body: JSON.stringify(review),
             });
             if (!response.ok) {
                 throw new Error('Error submitting review');
