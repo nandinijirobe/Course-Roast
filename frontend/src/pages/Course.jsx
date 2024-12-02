@@ -36,14 +36,13 @@ export default function Course () {
     const handlePopupClose = () => setPopupVisible(false);
 
     const handleReviewSubmit = async (review) => {
-        console.log(review)
         try {
             const response = await fetch(`http://localhost:3000/reviews/${id}/add`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ review }),
+                body: JSON.stringify(review),
             });
             if (!response.ok) {
                 throw new Error('Error submitting review');
@@ -74,7 +73,7 @@ export default function Course () {
                 <RatingGraph rating = {courseDetails.rating} reviews = {courseDetails.reviews}/>
             </div>
             { courseDetails.reviews ? (<ReviewsDisplay reviews = {courseDetails.reviews}/>) :
-            <></>} <ReviewPopup isVisible={isPopupVisible} onClose={handlePopupClose} onSubmit={handleReviewSubmit} />
+            <></>} <ReviewPopUp isVisible={isPopupVisible} onClose={handlePopupClose} onSubmit={handleReviewSubmit} />
 
 
         </>

@@ -3,7 +3,6 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
     background: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
@@ -18,6 +17,8 @@
     box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 31.25em; /* 500px converted to em (assuming base font-size is 16px) */
+    max-height: 90vh;
+  	overflow-y:scroll;
 }
 
 .closeBtn {
