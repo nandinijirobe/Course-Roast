@@ -8,12 +8,13 @@ import ScoreBoard from './components/ScoreBoard';
 import RatingGraph from './components/RatingGraph';
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { Link } from 'react-router-dom';
-// import ReviewPopUp from './components/ReviewPopUp'; 
+import ReviewPopUp from './components/ReviewPopUp'; 
 
 export default function Course () {
     const { id } = useParams();
 
     const [courseDetails, setCourseDetails] = useState([])
+    const [isPopupVisible, setPopupVisible] = useState(false);
 
     const getCourseData = async () => {
         try {
@@ -31,26 +32,27 @@ export default function Course () {
         }
     }
 
-    // const handlePopupOpen = () => setPopupVisible(true);
-    // const handlePopupClose = () => setPopupVisible(false);
+    const handlePopupOpen = () => setPopupVisible(true);
+    const handlePopupClose = () => setPopupVisible(false);
 
-    // const handleReviewSubmit = async (review) => {
-    //     try {
-    //         const response = await fetch(`http://localhost:3000/courses/${id}/reviews`, {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({ review }),
-    //         });
-    //         if (!response.ok) {
-    //             throw new Error('Error submitting review');
-    //         }
-    //         getCourseData(); // Refresh course data to include the new review
-    //     } catch (err) {
-    //         console.error(err);
-    //     }
-    // };
+    const handleReviewSubmit = async (review) => {
+        console.log(review)
+        try {
+            const response = await fetch(`http://localhost:3000/reviews/${id}/add`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ review }),
+            });
+            if (!response.ok) {
+                throw new Error('Error submitting review');
+            }
+            getCourseData(); // Refresh course data to include the new review
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
     useEffect (() => {
         getCourseData()
@@ -65,14 +67,14 @@ export default function Course () {
             </Link>
             <div className = {styles["title-and-btn"]}>
                 <div className = {styles["course-title"]}>{courseDetails.code}: {courseDetails.title}</div>
-                <button className = {styles["spill-beans-btn"]} /* onClick={handlePopupOpen} */>Spill the Beans! 🫘</button>
+                <button className = {styles["spill-beans-btn"]} onClick={handlePopupOpen}>Spill the Beans! 🫘</button>
             </div>
             <div className = {styles["course-stats"]}> 
                 <ScoreBoard hours = {courseDetails.hours} difficulty = {courseDetails.difficulty}/>
                 <RatingGraph rating = {courseDetails.rating} reviews = {courseDetails.reviews}/>
             </div>
             { courseDetails.reviews ? (<ReviewsDisplay reviews = {courseDetails.reviews}/>) :
-            <></>} {/* <ReviewPopup isVisible={isPopupVisible} onClose={handlePopupClose} onSubmit={handleReviewSubmit} /> */}
+            <></>} <ReviewPopup isVisible={isPopupVisible} onClose={handlePopupClose} onSubmit={handleReviewSubmit} />
 
 
         </>

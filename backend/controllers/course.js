@@ -36,6 +36,7 @@ export async function getAllCourses (query = {}) {
     }
     try {
       const [results, fields] = await db.query(sqlQuery, sqlParams)
+      console.log(results)
       return results
     } catch (err) {
         console.log(err)

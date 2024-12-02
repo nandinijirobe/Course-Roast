@@ -103,8 +103,8 @@ INSERT INTO reviews (course_id, comment, rating, difficulty, technical, creative
 INSERT INTO reviews (course_id, comment, rating, difficulty, technical, creative, theory, hours, semester, year, grade_earned) VALUES (5, 'I hate Zybooooks', 4.5, 4.5, 5, 3, 2, 8, 'Spring', 2023, 'B');
 INSERT INTO reviews (course_id, comment, rating, difficulty, technical, creative, theory, hours, semester, year, grade_earned) VALUES (11, 'Interesting concept with apps. A lot of do it yourself and learn how to code it on your own.', 4, 4, 5, 2, 0, 8, 'Fall', 2024, 'B');
 INSERT INTO reviews (course_id, comment, rating, difficulty, technical, creative, theory, hours, semester, year, grade_earned) VALUES (23, 'Love this class. Very fun but it does require a good amount of outside learning.', 5, 4, 5, 5, 0, 10, 'Spring', 2024, 'B');
-INSERT INTO reviews (course_id, comment, rating, difficulty, technical, creative, theory, hours, semester, year, grade_earned) VALUES (21, 'Easy going course. If you love to design you\'ll enjoy this class. No backend at all.', 4, 1, 5, 3, 0, 8, 'Fall', 2023, 'B');
-INSERT INTO reviews (course_id, comment, rating, difficulty, technical, creative, theory, hours, semester, year, grade_earned) VALUES (8, '3 languages in one semester. It\'s not hard to grasp if you listen in lecture and go to the TAs right away with questions.', 3, 3, 5, 1, 0, 8, 'Fall', 2024, 'B');
+INSERT INTO reviews (course_id, comment, rating, difficulty, technical, creative, theory, hours, semester, year, grade_earned) VALUES (21, 'Easy going course. If you love to design youll enjoy this class. No backend at all.', 4, 1, 5, 3, 0, 8, 'Fall', 2023, 'B');
+INSERT INTO reviews (course_id, comment, rating, difficulty, technical, creative, theory, hours, semester, year, grade_earned) VALUES (8, '3 languages in one semester. Its not hard to grasp if you listen in lecture and go to the TAs right away with questions.', 3, 3, 5, 1, 0, 8, 'Fall', 2024, 'B');
 
 -- INSERT INTO reviews () VALUES ()
 
