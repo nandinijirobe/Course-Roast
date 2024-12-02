@@ -8,7 +8,7 @@ export default function ScoreBoard(props) {
         <div className = {styles["score-board-container"]}>
             
             <div className = {styles["hrs-week-title"]}>Hours/Week:</div>
-            <div className = {styles["hrs-week-value"]}>{props.hours}</div>
+            <div className = {styles["hrs-week-value"]}>{props.hours ? props.hours.toFixed(1) : 0}</div>
             <div className = {styles["scores"]}>
                 <div>Avg Difficulty:</div>
                 <progress className={styles.progressBar} value={props.difficulty} max={5} />

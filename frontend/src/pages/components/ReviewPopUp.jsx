@@ -34,6 +34,7 @@ export default function ReviewPopup({ isVisible, onClose, onSubmit }) {
     return (
         <div className={styles.overlay}>
             <div className={styles.popup}>
+                <h2  className={styles.header}>Add your Review here!</h2>
                 {/* A container for the popup content, styled with CSS module classes. */}
                 <button className={styles.closeBtn} onClick={onClose}>✖</button>
                 {/* A button to close the popup by calling the `onClose` callback. */}
