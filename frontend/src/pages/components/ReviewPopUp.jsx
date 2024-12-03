@@ -111,7 +111,7 @@ export default function ReviewPopup({ isVisible, onClose, onSubmit }) {
 
                     <select name="semester" required className={styles.select}>
                         {/* A dropdown menu for selecting the semester. */}
-                        <option value="" disabled selected>Select Semester</option>
+                        <option value="" disabled>Select Semester</option>
                         {/* A placeholder option for the dropdown menu. */}
                         <option value="Spring">Spring</option>
                         <option value="Summer">Summer</option>
@@ -130,7 +130,7 @@ export default function ReviewPopup({ isVisible, onClose, onSubmit }) {
 
                     <select name="grade_earned" required className={styles.select}>
                         {/* A dropdown menu for selecting the grade earned. */}
-                        <option value="" disabled selected>Select Grade</option>
+                        <option value="" disabled>Select Grade</option>
                         {/* A placeholder option for the dropdown menu. */}
                         <option value="A">A</option>
                         <option value="B">B</option>

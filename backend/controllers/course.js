@@ -27,7 +27,7 @@ export async function getAllCourses (query = {}) {
     let sqlQuery = ""
     let sqlParams = []
     if (!query.q) {
-      sqlQuery = `SELECT course_id, title, code, rating, difficulty, type FROM courses;`
+      sqlQuery = `SELECT course_id, title, code, rating, difficulty, type FROM courses ORDER BY code;`
     }
     else {
       sqlParams.push(`%${query.q}%`)
@@ -36,7 +36,6 @@ export async function getAllCourses (query = {}) {
     }
     try {
       const [results, fields] = await db.query(sqlQuery, sqlParams)
-      console.log(results)
       return results
     } catch (err) {
         console.log(err)

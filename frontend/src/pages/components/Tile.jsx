@@ -8,7 +8,7 @@ export default function Tile(props) {
         <Link to={props.path} style={{textDecoration : 'none'}}>
         <div className={`${styles['CourseContainer']} 
                         ${props.courseOverallRating >= 4 ?
-                          styles['high-rated']: props.courseOverallRating >= 2 ? 
+                          styles['high-rated']: props.courseOverallRating >= 3.5 ? 
                           styles['mid-rated']: styles['low-rated']}`}
             style={{ cursor: 'pointer' }}
         >

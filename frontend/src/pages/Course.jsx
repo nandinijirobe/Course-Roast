@@ -69,7 +69,7 @@ export default function Course () {
                 <button className = {styles["spill-beans-btn"]} onClick={handlePopupOpen}>Spill the Beans! 🫘</button>
             </div>
             <div className = {styles["course-stats"]}> 
-                <ScoreBoard hours = {courseDetails.hours} difficulty = {courseDetails.difficulty}/>
+                <ScoreBoard key = {courseDetails.hours} hours = {courseDetails.hours} difficulty = {courseDetails.difficulty}/>
                 <RatingGraph rating = {courseDetails.rating} reviews = {courseDetails.reviews}/>
             </div>
             { courseDetails.reviews ? (<ReviewsDisplay reviews = {courseDetails.reviews}/>) :
